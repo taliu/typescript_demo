@@ -26,7 +26,8 @@
     "typescript": "^2.2.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.9.0"
+    "watchify": "^3.9.0",
+    "source-map-support": "^0.4.11"
   },
   "dependencies": {
     "babel-runtime": "^6.23.0"
