@@ -13,11 +13,13 @@ var babelify = require('babelify');
 var merge = require('merge2');  // Requires separate installation 
 //const babel = require('gulp-babel');
 //const concat = require('gulp-concat');
+var connect = require('gulp-connect');
 
 var paths = {
     pages: ['src/browser/**/*.html'],
     serverTS: ['src/server/**/*.ts'],
     browserifyEntries: ['src/browser/main.ts'],
+    distBrowser:['dist/browser/**/*.*']
 };
 
 
@@ -91,7 +93,28 @@ function server() {
     });
 }
 
+function liveReload(){
+    gulp.task('connect', function() {
+        connect.server({
+             port: 8001,
+            //root: 'dist',
+            livereload: true
+        });
+    });
+    
+    gulp.task('static-file', function () {
+        gulp.src(paths.distBrowser)
+            .pipe(connect.reload());
+    });
+    
+    gulp.task('watch-dist-browser', function () {
+        gulp.watch(paths.distBrowser, ['static-file']);
+    });
+    gulp.task('liveReload', ['connect', 'watch-dist-browser']);
+}
+
 browser();
 server();
+liveReload();
 
-gulp.task('default', ['watch-server', 'watch-browser']);
+gulp.task('default', ['watch-server', 'watch-browser','liveReload']);
