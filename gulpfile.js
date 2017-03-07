@@ -17,7 +17,7 @@ var merge = require('merge2');  // Requires separate installation
 var paths = {
     pages: ['src/browser/**/*.html'],
     serverTS: ['src/server/**/*.ts'],
-    browserifyEntries: ['src/main.ts'],
+    browserifyEntries: ['src/browser/main.ts'],
 };
 
 
@@ -94,5 +94,4 @@ function server() {
 browser();
 server();
 
-//gulp.task('default', ['watch-server', 'watch-browser']);
-gulp.task('default', ['watch-server']);
+gulp.task('default', ['watch-server', 'watch-browser']);
