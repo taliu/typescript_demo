@@ -30,6 +30,9 @@
     "source-map-support": "^0.4.11"
   },
   "dependencies": {
-    "babel-runtime": "^6.23.0"
+    "@types/koa": "^2.0.38",
+    "@types/node": "^6.0.64",
+    "babel-runtime": "^6.23.0",
+    "koa": "^2.0.1"
   }
 }
